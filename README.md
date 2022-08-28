@@ -44,15 +44,15 @@ jobs:
 
 ### Creating a new Version
 
-Use `npm version <major|minor|patch>` which will update `package.json` and
+Use `npm run release -- <major|minor|patch>` which will update `package.json` and
 create a git tag for the respective version.
 
 A release workflow will pick up the tag when pushed to GitHub, create a release
 and move major, minor and latest tags accordingly.
 
-To publish the release into the GitHub marketplace go
+To publish the release into the GitHub marketplace open
 [releases](https://github.com/simbo/action-semver-release-action/releases) and
-update the release.
+update the release for marketplace publishing.
 
 ## License and Author
 

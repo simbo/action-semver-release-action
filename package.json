@@ -27,7 +27,8 @@
   "main": "dist/index.js",
   "scripts": {
     "build": "rm -rf dist && ncc build src/index.ts --license licenses.txt --minify --out dist --target es2021",
-    "prepare": "husky install"
+    "prepare": "husky install",
+    "release": "curl -so- https://raw.githubusercontent.com/simbo/release-version-script/v1/release-version.sh | bash -s"
   },
   "dependencies": {
     "@actions/core": "^1.9.1",
