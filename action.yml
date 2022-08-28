@@ -1,0 +1,16 @@
+name: Action SemVer Release
+description: Creates releases for actions based on semver tags and moves major, minor and latest tags accordingly.
+
+branding:
+  icon: tag
+  color: green
+
+inputs:
+  token:
+    description: GitHub Repo Access Token
+    required: true
+    default: ${{ github.token }}
+
+runs:
+  using: node16
+  main: dist/index.js
