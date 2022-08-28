@@ -27,7 +27,10 @@ async function action(): Promise<void> {
     ...context.repo,
     tag_name: refTag,
     name: refTag,
-    body: ''
+    body: '',
+    draft: false,
+    prerelease: false,
+    generate_release_notes: false
   });
 }
 
