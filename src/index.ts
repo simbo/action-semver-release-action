@@ -18,9 +18,9 @@ async function action(): Promise<void> {
 
   const octokit = getOctokit(token);
 
-  for (const tag of [`tags/v${semver[1]}`, `tags/v${semver[1]}.${semver[2]}`, 'tags/latest']) {
-    await octokit.rest.git.deleteRef({ ...context.repo, ref: tag }).catch(() => {});
-    await octokit.rest.git.createRef({ ...context.repo, ref: `refs/${tag}`, sha: context.sha });
+  for (const tag of [`v${semver[1]}`, `v${semver[1]}.${semver[2]}`, 'latest']) {
+    await octokit.rest.git.deleteRef({ ...context.repo, ref: `tags/${tag}` }).catch(() => {});
+    await octokit.rest.git.createRef({ ...context.repo, ref: `refs/tags/${tag}`, sha: context.sha });
   }
 
   await octokit.rest.repos.createRelease({
