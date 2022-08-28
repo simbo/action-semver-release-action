@@ -8,7 +8,7 @@ marketplace manually as there is no way to automate this at the moment.
 
 ## Usage
 
-Add `simbo/action-semver-release-action@v1` to your workflow.
+Add `simbo/action-semver-release-action@latest` to your workflow.
 
 Let the workflow react on tags. Make sure your tags have a valid semantic
 versioning format and start with a `v`.
@@ -31,7 +31,7 @@ jobs:
         uses: actions/checkout@v3
 
       - name: 📦 Create Release
-        uses: simbo/action-semver-release-action@v1
+        uses: simbo/action-semver-release-action@latest
 ```
 
 ## Inputs
@@ -39,6 +39,20 @@ jobs:
 | Option  | Required | Default        | Description              |
 | ------- | -------- | -------------- | ------------------------ |
 | `token` | yes      | `github.token` | GitHub Repo Access Token |
+
+## Development
+
+### Creating a new Version
+
+Use `npm version <major|minor|patch>` which will update `package.json` and
+create a git tag for the respective version.
+
+A release workflow will pick up the tag when pushed to GitHub, create a release
+and move major, minor and latest tags accordingly.
+
+To publish the release into the GitHub marketplace go
+[releases](https://github.com/simbo/action-semver-release-action/releases) and
+update the release.
 
 ## License and Author
 
