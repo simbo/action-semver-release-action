@@ -21,7 +21,7 @@ on:
       - 'v*'
 
 jobs:
-  notify:
+  release:
     runs-on: ubuntu-latest
     steps:
       - name: 📦 Create Release
