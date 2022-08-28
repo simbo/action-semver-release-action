@@ -27,6 +27,9 @@ jobs:
   release:
     runs-on: ubuntu-latest
     steps:
+      - name: 🛎 Checkout
+        uses: actions/checkout@v3
+
       - name: 📦 Create Release
         uses: simbo/action-semver-release-action@v1
 ```
