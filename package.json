@@ -1,6 +1,6 @@
 {
   "name": "action-semver-release-action",
-  "version": "1.0.0",
+  "version": "v1.0.5",
   "description": "Creates releases for actions based on semver tags and moves major, minor and latest tags accordingly.",
   "author": "Simon Lepel <simbo@simbo.de> (https://simbo.de/)",
   "license": "MIT",
