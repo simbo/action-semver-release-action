@@ -44,7 +44,7 @@ jobs:
 
 ### Creating a new Version
 
-Use `npm run release -- <major|minor|patch>` which will update `package.json` and
+Use `npm run release <major|minor|patch>` which will update `package.json` and
 create a git tag for the respective version.
 
 A release workflow will pick up the tag when pushed to GitHub, create a release
