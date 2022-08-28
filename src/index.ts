@@ -26,7 +26,8 @@ async function action(): Promise<void> {
   await octokit.rest.repos.createRelease({
     ...context.repo,
     tag_name: refTag,
-    name: refTag
+    name: refTag,
+    body: ''
   });
 }
 
