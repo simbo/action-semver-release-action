@@ -1,10 +1,10 @@
 # simbo/action-semver-release-action
 
 A simple and lightning-fast GitHub action to create releases for actions based
-on semver tags and move major, minor and latest tags accordingly.
+on semantic version tags and move major, minor and latest tags accordingly.
 
-Unfortunately, you still have to publish your release to the GitHub marketplace
-manually as there is no way to automate this at the moment.
+Unfortunately, you still have to publish your action release to the GitHub
+marketplace manually as there is no way to automate this at the moment.
 
 ## Usage
 
