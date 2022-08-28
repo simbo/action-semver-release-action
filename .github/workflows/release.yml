@@ -6,8 +6,8 @@ on:
       - 'v*'
 
 jobs:
-  docs:
+  release:
     runs-on: ubuntu-latest
     steps:
       - name: 📦 Create Release
-        uses: ./
+        uses: simbo/action-semver-release-action@main
