@@ -17,7 +17,7 @@ inputs:
   release-name:
     description: The name of the created release
     required: false
-    default: Release %VERSION%
+    default: Release %TAG%
   release-body:
     description: The description of the created release
     required: false
