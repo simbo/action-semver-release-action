@@ -3,17 +3,20 @@ import { context, getOctokit } from '@actions/github';
 
 async function action(): Promise<void> {
   const token = getInput('token');
+  const createRelease = getInput('create-release');
+  const releaseName = getInput('release-name');
+  const releaseBody = getInput('release-body');
 
   if (!context.ref.startsWith('refs/tags/')) {
     throw new Error('ref is not a tag');
   }
 
-  const refTag = context.ref.substring(10);
+  const referenceTag = context.ref.slice(10);
 
-  const semver = /^v([0-9]+)\.([0-9]+)\.([0-9]+)$/.exec(refTag);
+  const semver = /^v(\d+)\.(\d+)\.(\d+)$/.exec(referenceTag);
 
   if (!semver) {
-    throw new Error(`tag '${refTag}' is not a valid semver version`);
+    throw new Error(`tag '${referenceTag}' is not a valid semver version`);
   }
 
   const octokit = getOctokit(token);
@@ -23,11 +26,16 @@ async function action(): Promise<void> {
     await octokit.rest.git.createRef({ ...context.repo, ref: `refs/tags/${tag}`, sha: context.sha });
   }
 
-  await octokit.rest.repos.createRelease({
-    ...context.repo,
-    tag_name: refTag,
-    name: refTag
-  });
+  if (createRelease === 'true') {
+    const name = releaseName.replaceAll('%TAG%', referenceTag);
+    const body = releaseBody.replaceAll('%TAG%', referenceTag);
+    await octokit.rest.repos.createRelease({
+      ...context.repo,
+      tag_name: referenceTag,
+      name,
+      body
+    });
+  }
 }
 
 try {
