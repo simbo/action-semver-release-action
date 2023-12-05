@@ -13,5 +13,11 @@ jobs:
       - name: 🛎 Checkout
         uses: actions/checkout@v4
 
+      - name: 📋 Get Changes between Tags
+        id: changes
+        uses: simbo/changes-between-tags-action@v1
+
       - name: 🎁 Create Release
         uses: ./
+        with:
+          release-body: ${{ steps.changes.outputs.changes }}
