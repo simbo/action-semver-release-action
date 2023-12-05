@@ -22,22 +22,35 @@
   },
   "private": true,
   "engines": {
-    "node": "^16"
+    "node": "^20"
   },
+  "type": "module",
   "main": "dist/index.js",
   "scripts": {
-    "build": "rm -rf dist && ncc build src/index.ts --license licenses.txt --minify --out dist --target es2021",
-    "prepare": "husky install"
+    "build": "rm -rf dist && ncc build src/index.ts --license licenses.txt --minify --out dist --target es2022",
+    "format": "prettier --check .",
+    "format:fix": "prettier --write .",
+    "lint": "eslint \"**/*.ts\"",
+    "lint:fix": "npm run lint -- --fix",
+    "preflight": "npm run format && npm run lint && npm run build",
+    "prepare": "husky install",
+    "upgrade": "npx --yes npm-check-updates -u -t minor --reject typescript && npx --yes npm-check-updates --interactive --reject typescript,@types/node && npm i"
   },
   "dependencies": {
-    "@actions/core": "^1.9.1",
-    "@actions/github": "^5.0.3"
+    "@actions/core": "^1.10.1",
+    "@actions/github": "^6.0.0"
   },
   "devDependencies": {
-    "@types/node": "^16",
-    "@vercel/ncc": "^0.34.0",
-    "husky": "^8.0.1",
-    "prettier": "^2.7.1",
-    "typescript": "^4.8.2"
+    "@ianvs/prettier-plugin-sort-imports": "^4.1.1",
+    "@types/node": "^20",
+    "@typescript-eslint/eslint-plugin": "^6.13.2",
+    "@typescript-eslint/parser": "^6.13.2",
+    "eslint": "^8.55.0",
+    "eslint-config-prettier": "^9.1.0",
+    "eslint-plugin-unicorn": "^49.0.0",
+    "@vercel/ncc": "^0.38.1",
+    "husky": "^8.0.3",
+    "prettier": "^3.1.0",
+    "typescript": "5.2.2"
   }
 }

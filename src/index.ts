@@ -30,4 +30,8 @@ async function action(): Promise<void> {
   });
 }
 
-action().catch(error => setFailed(error.message));
+try {
+  await action();
+} catch (error) {
+  setFailed((error as Error).message || `${error}`);
+}

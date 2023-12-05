@@ -26,9 +26,10 @@ on:
 jobs:
   release:
     runs-on: ubuntu-latest
+    permissions: write-all
     steps:
       - name: 🛎 Checkout
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: 📦 Create Release
         uses: simbo/action-semver-release-action@latest
@@ -56,4 +57,4 @@ update the release for marketplace publishing.
 
 ## License and Author
 
-[MIT &copy; Simon Lepel](http://simbo.mit-license.org/)
+[MIT &copy; 2022 Simon Lepel](http://simbo.mit-license.org/2022/)
